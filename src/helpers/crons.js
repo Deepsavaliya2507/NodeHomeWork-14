@@ -2,9 +2,9 @@ const CronJob = require("cron").CronJob;
 
 /** It's running on every 3 seconds. */
 new CronJob(
-  "*/3 * * * * *",
+  "*/10 * * * * *",
   function () {
-    console.log("It's running on every 3 seconds.");
+    console.log("It's running on every 10 seconds.");
   },
   null,
   false,
