@@ -7,7 +7,7 @@ const createCategory = async (req, res) => {
 
     const categoryExists = await categoryService.getCategoryByName(reqBody.category_name);
     if (categoryExists) {
-      throw new Error("category already created by this email!");
+      throw new Error("category already created by this category!");
     }
 
     const category = await categoryService.createCategory(reqBody);
@@ -20,7 +20,8 @@ const createCategory = async (req, res) => {
       message: "category create successfully!",
       data: { category },
     });
-  } catch (error) {
+  }
+catch (error) {
     res.status(400).json({ success: false, message: error.message });
   }
 };
@@ -106,6 +107,7 @@ const deleteCategory = async (req, res) => {
     res.status(400).json({ success: false, message: error.message });
   }
 };
+
 module.exports = {
   createCategory,
   getCategoryList,

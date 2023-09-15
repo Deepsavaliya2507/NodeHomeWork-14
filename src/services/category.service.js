@@ -1,4 +1,4 @@
-const { category } = require("../models");
+const { Category } = require("../models");
 
 /**
  * Create category
@@ -6,7 +6,7 @@ const { category } = require("../models");
  * @returns {Promise<category>}
  */
 const createCategory = async (reqBody) => {
-  return category.create(reqBody);
+  return Category.create(reqBody);
 };
 
 /**
@@ -16,8 +16,7 @@ const createCategory = async (reqBody) => {
  * @returns {Promise<category>}
  */
 const getCategoryList = async (filter, options) => {
-
-  return category.find({ $or: [{is_active: true}] });
+  return Category.find({ $or: [{ is_active: true }] });
 };
 
 /**
@@ -26,7 +25,7 @@ const getCategoryList = async (filter, options) => {
  * @returns {Promise<category>}
  */
 const getCategoryByName = async (category_name) => {
-  return category.findOne({ category_name });
+  return Category.findOne({ category_name }), console.log(category_name);
 };
 
 /**
@@ -35,7 +34,7 @@ const getCategoryByName = async (category_name) => {
  * @returns {Promise<category>}
  */
 const getCategoryById = async (categoryId) => {
-  return category.findById(categoryId);
+  return Category.findById(categoryId);
 };
 
 /**
@@ -45,7 +44,7 @@ const getCategoryById = async (categoryId) => {
  * @returns {Promise<category>}
  */
 const updateDetails = async (categoryId, updateBody) => {
-  return category.findByIdAndUpdate(categoryId, { $set: updateBody });
+  return Category.findByIdAndUpdate(categoryId, { $set: updateBody });
 };
 
 /**
@@ -54,7 +53,7 @@ const updateDetails = async (categoryId, updateBody) => {
  * @returns {Promise<category>}
  */
 const deleteCategory = async (categoryId) => {
-  return category.findByIdAndDelete(categoryId);
+  return Category.findByIdAndDelete(categoryId);
 };
 
 module.exports = {
